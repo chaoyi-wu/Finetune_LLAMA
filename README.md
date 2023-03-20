@@ -16,6 +16,7 @@
 
 ## LLAMA模型下载地址：
 预训练模型下载 https://huggingface.co/nyanko7/LLaMA-7B
+
 迅雷地址 [magnet:?xt=urn:btih:ZXXDAUWYLRUXXBHUYEMS6Q5CE5WA3LVA&dn=LLaMA]（未测试） 
 
 ## Acknowledge:
