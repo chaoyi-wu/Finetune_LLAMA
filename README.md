@@ -1,6 +1,5 @@
 ## S1：
 首先安装进入Python_Package安装相关库文件，重点在于peft包transformers包的安装，建议先使用pip安装online package保证依赖包都顺利安装，再pip install -e .本地安装替换。
-
 **注意**：pytorch包务必使用conda安装！sentencepiece包勿遗漏。
 
 ## S2：
