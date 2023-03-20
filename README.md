@@ -10,4 +10,4 @@ S4：修改finetune_pp.py或finetune_pp_peft.py相关参数（前者为整个网
 
 S5：参考test_sample.py进行测试，注意测试时，尽量使用多卡，可能会有未知bug（未测试）。
 
-参考 Minimal LLaMA https://github.com/zphang/minimal-llama 实现
+参考 Minimal LLaMA https://github.com/zphang/minimal-llama 实现，主要修复了部分bug。
