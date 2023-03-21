@@ -138,7 +138,7 @@ def main():
         model.load_state_dict(
             torch.load(os.path.join(os.path.join(args.save_dir, f"params-{start + 1:06d}.p"))), strict=False)
         opt.load_state_dict(
-            torch.load(os.path.join(os.path.join(args.save_dir, f"opt-{start + 1:06d}.p"))))
+            torch.load(os.path.join(os.path.join(args.save_dir, f"opt-{start + 1:06d}.p"))),map_location='cpu')
     else:
         start = 0
 
