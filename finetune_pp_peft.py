@@ -118,7 +118,7 @@ def main():
     peft_config = get_peft_config(peft_args=args)
     model = get_peft_model(model, peft_config)
 
-    for layer_i in range(len(allocations)):
+    for layer_i in range(len(model.base_model.model.model.layers)):
         device = model.base_model.model.model.layers[layer_i].self_attn.q_proj.weight.device
         model.base_model.model.model.layers[layer_i].self_attn.q_proj.lora_B.to(device)
         model.base_model.model.model.layers[layer_i].self_attn.q_proj.lora_A.to(device)
