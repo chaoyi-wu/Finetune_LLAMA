@@ -45,7 +45,7 @@ def Setup_model(model_path, peft_flag = True, peft_arg = None):
         device_map[f"model.layers.{layer_i}.post_attention_layernorm.weight"] = device_id
         device_map[f"model.layers.{layer_i}.self_attn.rotary_emb.inv_freq"] = device_id
 
-    model = transformers.LLaMAForCausalLM.from_pretrained(
+    model = transformers.LlamaForCausalLM.from_pretrained(
         model_path,
         #load_in_8bit=True,
         device_map=device_map,
@@ -90,7 +90,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    tokenizer = transformers.LLaMATokenizer.from_pretrained(args.tokenizer_path)    
+    tokenizer = transformers.LlamaTokenizer.from_pretrained(args.tokenizer_path)    
     model = Setup_model(model_path = args.model_path, peft_flag = True, peft_arg = args)
     
     model.eval()

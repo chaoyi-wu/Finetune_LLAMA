@@ -113,7 +113,7 @@ def main():
     dataset = datasets.load_from_disk(finetune_args.dataset_path)
 
     print("Setup Model")
-    model = transformers.LLaMAForCausalLM.from_pretrained(
+    model = transformers.LlamaForCausalLM.from_pretrained(
         finetune_args.model_path,
         #load_in_8bit=True,
         device_map='auto',
