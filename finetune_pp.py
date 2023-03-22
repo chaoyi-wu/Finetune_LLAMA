@@ -54,8 +54,8 @@ class DatasetDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         return (
-            torch.LongTensor(self.dataset[idx]["input_ids"])[:-1],
-            torch.LongTensor(self.dataset[idx]["input_ids"])[1:],
+            torch.LongTensor(self.dataset[idx]["input_ids"]),
+            torch.LongTensor(self.dataset[idx]["input_ids"]),
         )
 
 
