@@ -1,0 +1,22 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3
+torchrun --nproc_per_node=4 finetune_pp_peft_trainer.py \
+    --model_path ./LLAMA_Model/llama-7b \
+    --Train_dataset_path ./Data_sample/PMCandMedMCQA_itemed_Tokenized\
+    --bf16 True \
+    --output_dir ./Fine_Tuning_Results/PMCandMedMCQA_Lora \
+    --num_train_epochs 3 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --gradient_accumulation_steps 8 \
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 2000 \
+    --save_total_limit 1 \
+    --learning_rate 2e-5 \
+    --weight_decay 0. \
+    --warmup_ratio 0.03 \
+    --lr_scheduler_type "cosine" \
+    --logging_steps 1 \
+    --fsdp "full_shard auto_wrap" \
+    --fsdp_transformer_layer_cls_to_wrap 'LlamaDecoderLayer' \
+    --tf32 True
