@@ -1,9 +1,9 @@
-CUDA_VISIBLE_DEVICES=0,1,2,3
-torchrun --nproc_per_node=4 finetune_pp_peft_trainer_lora.py \
-    --model_path ./LLAMA_Model/llama-7b \
+#CUDA_VISIBLE_DEVICES=0,1,2,3
+torchrun --nproc_per_node=8 finetune_pp_peft_trainer_lora_30B.py \
+    --model_path ./LLAMA_Model/llama-30b-hf \
     --Train_dataset_path ./Data_sample/PMCandMedMCQA_itemed_Tokenized\
     --bf16 True \
-    --output_dir ./Fine_Tuning_Results/PMCandMedMCQA_Lora \
+    --output_dir ./Fine_Tuning_Results/test \
     --num_train_epochs 3 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
@@ -18,4 +18,4 @@ torchrun --nproc_per_node=4 finetune_pp_peft_trainer_lora.py \
     --lr_scheduler_type "cosine" \
     --fsdp "full_shard offload auto_wrap" \
     --logging_steps 1 \
-    --tf32 True
+    --tf32 True 

@@ -61,7 +61,7 @@ class DataCollatorForSupervisedDataset(object):
         
 @dataclass
 class ModelArguments:
-    model_path: Optional[str] = field(default="./LLAMA_Model/llama-7b")
+    model_path: Optional[str] = field(default="./LLAMA_Model/llama-13b-hf")
     peft_mode: Optional[str] = field(default="lora")
     lora_rank: Optional[int] = field(default=8)
 
