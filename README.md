@@ -14,8 +14,11 @@
 ## S5：
 参考test_sample.py进行测试，注意测试时，尽量避免使用多卡。
 
-## 更新：
+## 更新3.30：
 增加两个_trainer.py, 利用transformers.trainer简单实现单机多卡并行，使用fsdp解决了单卡爆卡的问题，训练速度显著加快（To do：lora版本还没有有效使用fsdp，目前可以运行单纯是因为lora优化参数少单卡不会爆。。）
+
+## 更新3.31：
+修复了lora与fsdp不能并存的问题，目前可以支持13B的训练，并且在lora版本下11s可以处理2048个tokens，在完全finetune的情况下也可以做到60s处理2048个tokens。并且可以支持33B（lora）版的训练，但是速度还是比较慢，大概200s单卡可以处理完2048个tokens。
 
 ## LLAMA模型下载地址：
 预训练模型下载 https://huggingface.co/nyanko7/LLaMA-7B
