@@ -9,7 +9,7 @@
 进入Data_sample按照示例处理数据。
 
 ## S4：
-修改finetune_pp.py或finetune_pp_peft.py相关参数（前者为整个网络参数均进行finetune，后者参考lora进行部分参数finetune），指定GPU（直接命令行，os.environment暂时不知道为什么无效），即可进行训练。 以batch4为例，peft版大概4张A100每张会使用60G显存，一个step耗时16s前后，pp版则8张A100每张会使用70G前后，一个step耗时65s。
+修改finetune_pp.py或finetune_pp_peft.py相关参数（前者为整个网络参数均进行finetune，后者参考lora进行部分参数finetune），指定GPU（直接命令行，os.environment暂时不知道为什么无效），即可进行训练。 以batch4（max-seq-length=2048）为例，peft版大概4张A100每张会使用60G显存，一个step耗时5s前后，pp版则8张A100每张会使用70G前后，一个step耗时30s。使用trainer实现单机多卡并行后，可以大幅提速，4张A100每张使用70G显存，可以以batch16（max-seq-length=512）进行训练，一个step耗时7s前后。
 
 ## S5：
 参考test_sample.py进行测试，注意测试时，尽量避免使用多卡。
