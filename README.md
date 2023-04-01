@@ -1,5 +1,5 @@
 ## S1：
-首先安装进入Python_Package安装相关库文件，重点在于peft包transformers包的安装，建议先使用pip安装online package保证依赖包都顺利安装，再pip install -e .本地安装替换。
+首先安装进入Python_Package安装相关库文件，重点在于peft包transformers包的安装，建议先使用pip安装online package保证依赖包都顺利安装，再```pip install -e .```本地安装替换。
 **注意**：pytorch包务必使用conda安装！sentencepiece包勿遗漏。
 
 ## S2：
@@ -22,15 +22,19 @@
 
 ## 更新4.1：
 Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）可以达到16s完成单卡1536（3batch of 512）一次step。
-关于deepspeed的库安装，首先pytorch环境还是必须得conda安装，其次使用conda安装gcc6 conda install -c omgarcia gcc-6， 然后更新一下gcc的动态库 conda install -c anaconda libstdcxx-ng 最后git clone https://github.com/microsoft/DeepSpeed， 使用DS_BUILD_CPU_ADAM=1 DS_BUILD_AIO=1 DS_BUILD_UTILS=1 pip install -e .安装。
+
+关于deepspeed的库安装，首先pytorch环境还是必须得conda安装，其次使用conda安装gcc6 ```conda install -c omgarcia gcc-6```， 然后更新一下gcc的动态库 ```conda install -c anaconda libstdcxx-ng``` 最后```git clone https://github.com/microsoft/DeepSpeed```， 使用```DS_BUILD_CPU_ADAM=1 DS_BUILD_AIO=1 DS_BUILD_UTILS=1 pip install -e .```安装。
 
 ## LLAMA模型下载地址：
-预训练模型下载 https://huggingface.co/nyanko7/LLaMA-7B
 
 迅雷地址 [magnet:?xt=urn:btih:ZXXDAUWYLRUXXBHUYEMS6Q5CE5WA3LVA&dn=LLaMA]（未测试） 
 
 ## Acknowledge:
 参考 Minimal LLaMA https://github.com/zphang/minimal-llama 实现，主要修复了部分bug。
+
+参考alpaca https://github.com/tatsu-lab/stanford_alpaca 加入fsdp。
+
+参考LMFLow https://github.com/OptimalScale/LMFlow/tree/main/src/lmflow 加入deepspeed模块。
 
 LLaMA: Open and Efficient Foundation Language Models -- https://arxiv.org/abs/2302.13971
 
