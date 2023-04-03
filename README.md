@@ -18,10 +18,10 @@
 增加两个_trainer.py, 利用transformers.trainer简单实现单机多卡并行，使用fsdp解决了单卡爆卡的问题，训练速度显著加快（To do：lora版本还没有有效使用fsdp，目前可以运行单纯是因为lora优化参数少单卡不会爆。。）
 
 ## 更新3.31：
-修复了lora与fsdp不能并存的问题，目前可以支持13B的训练，并且在lora版本下11s可以处理8*2048个tokens，在完全finetune的情况下也可以做到60s处理8*2048个tokens。并且可以支持33B（lora）版的训练，但是速度还是比较慢，大概200s单卡可以处理完8*2048个tokens。
+修复了lora与fsdp不能并存的问题，目前可以支持13B的训练，并且在lora版本下11s可以处理```8*2048```个tokens，在完全finetune的情况下也可以做到60s处理```8*2048```个tokens。并且可以支持33B（lora）版的训练，但是速度还是比较慢，大概200s单卡可以处理完```8*2048```个tokens。
 
 ## 更新4.1：
-Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）可以达到16s完成单卡1536（3batch of 512）8次step。
+Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）可以达到16s完成单卡1536（3batch of 512）的8次step。
 
 关于deepspeed的库安装，首先pytorch环境还是必须得conda安装，其次使用conda安装gcc6 ```conda install -c omgarcia gcc-6```， 然后更新一下gcc的动态库 ```conda install -c anaconda libstdcxx-ng``` 最后```git clone https://github.com/microsoft/DeepSpeed```， 使用```DS_BUILD_CPU_ADAM=1 DS_BUILD_AIO=1 DS_BUILD_UTILS=1 pip install -e .```安装。
 
