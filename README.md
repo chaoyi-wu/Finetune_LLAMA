@@ -35,6 +35,7 @@ Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）�
 | 7B                                     | 128        | DS（config3） | ~100h      |
 | 7B                                     | 384        | DS（config2） | ~90h       |
 | 7B                                     | 384        | FSDP_no_cpu   | ~35h       |
+| 7B                                     | 128        | FSDP_no_cpu   | ~36h       |
 > DS(config3):optimizer and persistent parameters offloaded to cpu\
 > DS(config2):optimizer offloaded to cpu\
 > FSDP_no_cpu: No cpu involved\
