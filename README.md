@@ -1,4 +1,4 @@
-# Finetune_llama Step by Step
+# 微调Llama的中文指南（By Wucc）
 ## S1：
 进入Python_Package安装相关peft包和transformers包。
 
