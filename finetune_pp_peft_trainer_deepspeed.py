@@ -62,6 +62,7 @@ class DataCollatorForSupervisedDataset(object):
 @dataclass
 class ModelArguments:
     model_path: Optional[str] = field(default="./LLAMA_Model/llama-13b-hf")
+    lora_used: Optional[bool] = field(default=False)
     peft_mode: Optional[str] = field(default="lora")
     lora_rank: Optional[int] = field(default=8)
 
@@ -103,10 +104,10 @@ def main():
         model_args.model_path,
         cache_dir=training_args.cache_dir,
     )
-
-    print("Setup PEFT")
-    peft_config = get_peft_config(peft_args=model_args)
-    model = get_peft_model(model, peft_config)
+    if model_args.lora_used:
+        print("Setup PEFT")
+        peft_config = get_peft_config(peft_args=model_args)
+        model = get_peft_model(model, peft_config)
     
     trainer = Trainer(model=model, 
                       train_dataset = Train_dataset, 
