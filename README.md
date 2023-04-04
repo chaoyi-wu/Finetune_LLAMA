@@ -1,4 +1,4 @@
-# 微调Llama的中文指南（By Wucc）
+# 微调Llama的中文指南
 ## S1：
 进入Python_Package安装相关peft包和transformers包。
 
