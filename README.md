@@ -36,9 +36,12 @@ Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）�
 | 7B                                     | 384        | DS（config2） | ~90h       |
 | 7B                                     | 384        | FSDP_no_cpu   | ~35h       |
 > DS(config3):optimizer and cpu both offloaded to cpu
-DS(config2):optimizer offloaded to cpu
-FSDP_no_cpu: No cpu involved
-注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。"
+
+> DS(config2):optimizer offloaded to cpu
+
+> FSDP_no_cpu: No cpu involved
+
+> 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。"
 
 ## LLAMA模型下载地址：
 
