@@ -29,7 +29,7 @@ DeepSpeed的库安装\
 
 通过```sh finetune_pp_peft_trainer_deepspeed.sh```进行训练，传入参数```--lora_used True(False)```控制是否使用lora。
 
-DS版本支持33B（lora）llama快速进行finetune，训练时长参考[LMFlow](https://github.com/OptimalScale/LMFlow/tree/main/src/lmflow)。
+DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](https://github.com/OptimalScale/LMFlow/tree/main/src/lmflow)一致。
 
 ## 训练时长统计：
 在4.8M PMCOA papers上统计各种训练设置的耗时。
