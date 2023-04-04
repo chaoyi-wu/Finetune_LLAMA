@@ -29,8 +29,8 @@ Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）�
 在4.8M papers上统计现在各种训练设置的耗时，训练时总是对每一个paper随机抽取一段512tokens长度的句子进行训练，相当于一个epoch会处理2.5B前后的tokens。
 | Statistic on S2ORC (4.8M PMCOA papers) with 8 A100 |            |               |            |
 | -------------------------------------- | ---------- | ------------- | ---------- |
-| Model_Size                             | Batch_Size | 并行策略      | Time/epoch |
-| 13B                                    | 384        | DS（Opt&Par） | ~122h      |
+| Model_Size                             | Batch_Size | Accelerate Strategy      | Time/epoch |
+| 13B                                    | 384        | DS*（Opt&Par） | ~122h      |
 | 7B                                     | 768        | DS（Opt&Par） | ~100h      |
 | 7B                                     | 128        | DS（Opt&Par） | ~100h      |
 | 7B                                     | 384        | DS（Opt） | ~90h       |
@@ -39,7 +39,7 @@ Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）�
 > DS(Opt&Par):optimizer and persistent parameters offloaded to cpu\
 > DS(Opt):optimizer offloaded to cpu\
 > FSDP_no_cpu: No cpu involved\
-> 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。
+> 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。表中上标*代表必须采用这种加速策略才能避免OOM。
 
 ## LLAMA模型下载地址：
 
