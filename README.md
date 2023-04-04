@@ -27,7 +27,7 @@ Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）�
 
 ## 更新4.04：
 在4.8M papers上统计现在各种训练设置的耗时，训练时总是对每一个paper随机抽取一段512tokens长度的句子进行训练，相当于一个epoch会处理2.5B前后的tokens。
-| Statistic on S2ORC (4.8M PMCOA papers) |            |               |            |
+| Statistic on S2ORC (4.8M PMCOA papers) with 8 A100 |            |               |            |
 | -------------------------------------- | ---------- | ------------- | ---------- |
 | Model_Size                             | Batch_Size | 并行策略      | Time/epoch |
 | 13B                                    | 384        | DS（Opt&Par） | ~122h      |
