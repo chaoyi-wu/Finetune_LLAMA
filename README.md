@@ -20,10 +20,25 @@
 ## 更新3.31：
 修复了lora与fsdp不能并存的问题，目前可以支持13B的训练，并且在lora版本下11s可以处理```8*2048```个tokens，在完全finetune的情况下也可以做到60s处理```8*2048```个tokens。并且可以支持33B（lora）版的训练，但是速度还是比较慢，大概200s单卡可以处理完```8*2048```个tokens。
 
-## 更新4.1：
+## 更新4.01：
 Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）可以达到16s完成单卡1536（3batch of 512）的8次step。
 
 关于deepspeed的库安装，首先pytorch环境还是必须得conda安装，其次使用conda安装gcc6 ```conda install -c omgarcia gcc-6```， 然后更新一下gcc的动态库 ```conda install -c anaconda libstdcxx-ng``` 最后```git clone https://github.com/microsoft/DeepSpeed```， 使用```DS_BUILD_CPU_ADAM=1 DS_BUILD_AIO=1 DS_BUILD_UTILS=1 pip install -e .```安装。
+
+## 更新4.04：
+在4.8M papers上统计现在各种训练设置的耗时，训练时总是对每一个paper随机抽取一段512tokens长度的句子进行训练，相当于一个epoch会处理2.5B前后的tokens。
+| Statistic on S2ORC (4.8M PMCOA papers) |            |               |            |
+| -------------------------------------- | ---------- | ------------- | ---------- |
+| Model_Size                             | Batch_Size | 并行策略      | Time/epoch |
+| 13B                                    | 384        | DS（config3） | ~122h      |
+| 7B                                     | 768        | DS（config3） | ~100h      |
+| 7B                                     | 128        | DS（config3） | ~100h      |
+| 7B                                     | 384        | DS（config2） | ~90h       |
+| 7B                                     | 384        | FSDP_no_cpu   | ~35h       |
+> DS(config3):optimizer and cpu both offloaded to cpu
+DS(config2):optimizer offloaded to cpu
+FSDP_no_cpu: No cpu involved
+注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。"
 
 ## LLAMA模型下载地址：
 
