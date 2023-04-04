@@ -38,7 +38,7 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 在4.8M PMCOA papers上统计各种训练设置的耗时。
 
 训练时默认采用8张A100，每次对paper随机抽取一段512 tokens长度的句子进行训练，等价于一个epoch会处理**2.5B**tokens。
-| Statistic on S2ORC (4.8M PMCOA papers) with 8 A100 |            |               |            |
+| Statistic on S2ORC (4.8M PMCOA papers) |            |               |            |
 | -------------------------------------- | ---------- | ------------- | ---------- |
 | Model_Size                             | Batch_Size | Accelerate Strategy      | Time/epoch |
 | 13B                                    | 384        | DS*（Opt&Par） | ~122h      |
