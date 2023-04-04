@@ -1,4 +1,5 @@
 # 微调Llama的中文指南
+本项目旨在引导中文用户微调Large Language Model（LLAMA），整合了目前多种微调Llama的加速策略，并尽量避免不必要的封装，保证代码可读性。
 ## S1：
 进入Python_Package安装相关peft包和transformers包。
 
