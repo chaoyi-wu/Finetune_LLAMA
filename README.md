@@ -30,14 +30,14 @@ Not Fooling！使用deepspeed替换了fsdp，现在可以finetune 33B（lora）�
 | Statistic on S2ORC (4.8M PMCOA papers) |            |               |            |
 | -------------------------------------- | ---------- | ------------- | ---------- |
 | Model_Size                             | Batch_Size | 并行策略      | Time/epoch |
-| 13B                                    | 384        | DS（config3） | ~122h      |
-| 7B                                     | 768        | DS（config3） | ~100h      |
-| 7B                                     | 128        | DS（config3） | ~100h      |
-| 7B                                     | 384        | DS（config2） | ~90h       |
+| 13B                                    | 384        | DS（Opt&Par） | ~122h      |
+| 7B                                     | 768        | DS（Opt&Par） | ~100h      |
+| 7B                                     | 128        | DS（Opt&Par） | ~100h      |
+| 7B                                     | 384        | DS（Opt） | ~90h       |
 | 7B                                     | 384        | FSDP_no_cpu   | ~35h       |
 | 7B                                     | 128        | FSDP_no_cpu   | ~36h       |
-> DS(config3):optimizer and persistent parameters offloaded to cpu\
-> DS(config2):optimizer offloaded to cpu\
+> DS(Opt&Par):optimizer and persistent parameters offloaded to cpu\
+> DS(Opt):optimizer offloaded to cpu\
 > FSDP_no_cpu: No cpu involved\
 > 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。
 
