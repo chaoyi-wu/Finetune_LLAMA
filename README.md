@@ -31,7 +31,7 @@ DeepSpeed的库安装：\
 ```conda install -c omgarcia gcc-6```，使用conda安装gcc6\
 ```conda install -c anaconda libstdcxx-ng``` ，更新gcc的动态库\
 ```git clone https://github.com/microsoft/DeepSpeed```，下载DS库\
-```DS_BUILD_CPU_ADAM=1 DS_BUILD_AIO=1 DS_BUILD_UTILS=1 pip install -e .```完成安装。
+```DS_BUILD_CPU_ADAM=1 DS_BUILD_AIO=1 DS_BUILD_UTILS=1 pip install -e .```完成安装。\
 cuda环境有问题可以参考这个[issue#2684](https://github.com/microsoft/DeepSpeed/issues/2684)
 
 ```sh finetune_pp_peft_trainer_deepspeed.sh```进行训练，传入参数```--lora_used True(False)```控制是否使用lora。
