@@ -5,7 +5,7 @@
 
 建议先使用pip安装online package保证依赖包都顺利安装，再```pip install -e .```本地安装替换。
 
-**注意**：pytorch包务必使用conda安装！
+**注意**：pytorch包务必使用conda安装！不要忘记安装sentencepiece！
 
 ## S2：
 进入LLAMA_Model下载模型参数 https://huggingface.co/decapoda-research/llama-7b-hf 或者官网下载llama，使用convert_to_ds_params.py进行处理。
