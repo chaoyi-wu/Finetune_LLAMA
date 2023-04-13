@@ -64,6 +64,7 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 * Batch size: 128
 * Cutoff length: 512
 * Learning rate: 2e-5
+
 每个epoch我们都从每篇paper中抽取512 tokens用来训练。
 
 ## Acknowledge:
