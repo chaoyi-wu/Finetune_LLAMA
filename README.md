@@ -74,10 +74,11 @@ DownStream Finetune Performance:
 | ---------------- | ---------- | ------------- |
 | LLaMA_7B         | 44.54      | 48.51         |
 | PMC_LLaMA_7B     | 44.70      | 50.54         |
+
 训练测试流程完全保持一致均是full finetune 3 epochs。较之于LLaMA_7B， 我们的模型取得了更好的ID（in Domain）测试效果，OOD效果不明显。
 
 训练曲线：
-![](https://github.com/chaoyi-wu/Finetune_LLAMA\figures\training_curve.png)
+![](https://github.com/chaoyi-wu/Finetune_LLAMA/blob/main/figures/training_curve.png)
 
 整体上看对于医疗数据的拟合能力更强。
 
