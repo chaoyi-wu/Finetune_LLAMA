@@ -59,11 +59,11 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 ## PMC论文训练结果：
 我们再S2ORC数据集提供的4.8M PMC paper上训练了PMC_LLAMA_7B, 模型可以从 https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B 获取
 
-整体的训练设置如下：\
-* Epochs: 5\
-* Batch size: 128\
-* Cutoff length: 512\
-* Learning rate: 2e-5\
+整体的训练设置如下：
+* Epochs: 5
+* Batch size: 128
+* Cutoff length: 512
+* Learning rate: 2e-5
 每个epoch我们都从每篇paper中抽取512 tokens用来训练。
 
 ## Acknowledge:
