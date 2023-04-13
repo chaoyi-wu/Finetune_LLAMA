@@ -57,7 +57,7 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 > 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。表中上标*代表必须采用这种加速策略才能避免OOM。
 
 ## PMC论文训练结果：
-我们在S2ORC数据集提供的4.8M PMC paper上finetune了LLAMA-7B，得到了PMC_LLAMA_7B [hugging face url](https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B)
+我们在S2ORC数据集提供的4.8M PMC paper上finetune了LLAMA-7B，得到了PMC_LLAMA_7B([hugging face url](https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B))
 
 整体的训练设置如下：
 * Epochs: 5
