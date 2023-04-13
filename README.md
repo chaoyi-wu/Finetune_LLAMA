@@ -56,6 +56,16 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 > FSDP_no_cpu: No cpu involved\
 > 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。表中上标*代表必须采用这种加速策略才能避免OOM。
 
+## PMC论文训练结果：
+我们再S2ORC数据集提供的4.8M PMC paper上训练了PMC_LLAMA_7B, 模型可以从 https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B 获取
+
+整体的训练设置如下：\
+* Epochs: 5\
+* Batch size: 128\
+* Cutoff length: 512\
+* Learning rate: 2e-5\
+每个epoch我们都从每篇paper中抽取512 tokens用来训练。
+
 ## Acknowledge:
 参考 Minimal LLaMA https://github.com/zphang/minimal-llama 实现，主要修复了部分bug。
 
