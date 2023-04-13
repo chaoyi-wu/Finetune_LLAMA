@@ -57,7 +57,7 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 > 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。表中上标*代表必须采用这种加速策略才能避免OOM。
 
 ## PMC论文训练结果：
-我们在S2ORC数据集提供的4.8M PMC paper上finetune了LLaMA-7B，得到了PMC_LLaMA_7B([Hugging Face URL](https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B))
+我们在S2ORC数据集提供的4.8M PMC paper上继续训练了LLaMA-7B，得到了PMC_LLaMA_7B([Hugging Face URL](https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B))
 
 整体的训练设置如下：
 * Epochs: 5
@@ -66,6 +66,20 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 * Learning rate: 2e-5
 
 每个epoch我们都从每篇paper中抽取512 tokens用来训练。
+
+DownStream Finetune Performance:
+
+我们使用PubMedQA和MedMCQA数据集的训练数据做下游finetuning，并测试结果如下：
+| Initialize       | USMLE(OOD) | MedMCQA（ID） |
+| ---------------- | ---------- | ------------- |
+| LLaMA_7B         | 44.54      | 48.51         |
+| PMC_LLaMA_7B     | 44.70      | 50.54         |
+训练测试流程完全保持一致均是full finetune 3 epochs。较之于LLaMA_7B， 我们的模型取得了更好的ID（in Domain）测试效果，OOD效果不明显。
+
+训练曲线：
+![](https://github.com/chaoyi-wu/Finetune_LLAMA\figures\training_curve.png)
+
+整体上看对于医疗数据的拟合能力更强。
 
 ## Acknowledge:
 参考 Minimal LLaMA https://github.com/zphang/minimal-llama 实现，主要修复了部分bug。
