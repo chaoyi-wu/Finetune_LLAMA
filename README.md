@@ -78,7 +78,7 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 
 训练测试流程完全保持一致均是full finetune 3 epochs。较之于LLaMA_7B， 我们的模型取得了更好的ID（in Domain）测试效果，OOD效果不明显。
 
-训练曲线：
+#### 收敛速度-训练曲线：
 ![](https://github.com/chaoyi-wu/Finetune_LLAMA/blob/main/figures/training_curve.png)
 
 整体上看对于医疗数据的拟合能力更强。
