@@ -38,6 +38,13 @@ cuda环境有问题可以参考这个[issue#2684](https://github.com/microsoft/D
 
 DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](https://github.com/OptimalScale/LMFlow/tree/main/src/lmflow)一致。
 
+实测：尽量避免使用DeepSpeed，DS默认使用cpu_offload极大的拖慢了训练速度。
+
+## checkpointing内存优化并行：
+请参考```finetune_pp_peft_trainer_checkpointing.sh``` 的实现。
+
+对于超过7B的大模型，内存问题非常严重，使用gradient checkpointing可以大幅降低内存占用，扩大batch size 在大模型大数据的情况下，可以快速的进行预训练。代价是牺牲step数目。
+
 ## 训练时长统计：
 在4.8M PMCOA papers上统计各种训练设置的耗时。
 
@@ -55,6 +62,8 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 > DS(Opt):optimizer offloaded to cpu\
 > FSDP_no_cpu: No cpu involved\
 > 注：cpu参与会导致训练速度变慢，但规模上去后，比如13B，必须CPU参与才可以完成多卡并行。表中上标*代表必须采用这种加速策略才能避免OOM。
+
+参数设置参考：https://github.com/mosaicml/examples/tree/release/v0.0.4/examples/llm/throughput
 
 ## PMC-LLAMA-7B：
 我们在S2ORC数据集提供的4.8M PMC paper上继续训练了LLaMA-7B，得到了PMC_LLaMA_7B([Hugging Face URL](https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B))
