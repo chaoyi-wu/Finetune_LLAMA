@@ -105,7 +105,7 @@ USMLE的训练样本为10,178, 远少于MedMCQA的211,269和PubMedQA的182,822�
 
 鉴于目前LLM的部署难度，LoRA Finetune是目前比较主流的框架，我们比较了在这种参数受限情况下的表现情况，实验统一使用rank-8的LoRA，训练集使用PubMedQA和MedMCQA：
 
-| Initialize       | USMLE(OOD) | MedMCQA（ID） | MedMCQA（ID） |
+| Initialize       | USMLE(OOD) | MedMCQA（ID） | PubMedQA（ID） |
 | ---------------- | ---------- | ------------- | -------------|
 | LLaMA_7B         | 29.38      | 32.37         | 65.81        |
 | PMC_LLaMA_7B     | 30.64      | 34.33         | 68.23        |
