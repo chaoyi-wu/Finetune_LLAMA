@@ -16,6 +16,6 @@ torchrun --nproc_per_node=4 finetune_pp_peft_trainer_lora.py \
     --weight_decay 0. \
     --warmup_ratio 0.03 \
     --lr_scheduler_type "cosine" \
-    --fsdp "full_shard offload auto_wrap" \
+    --deepspeed ./configs/ds_config_zero2.json\
     --logging_steps 1 \
     --tf32 True
