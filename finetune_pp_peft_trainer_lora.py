@@ -107,7 +107,7 @@ def main():
     print("Setup PEFT")
     peft_config = get_peft_config(peft_args=model_args)
     model = get_peft_model(model, peft_config)
-    training_args.fsdp_config['fsdp_min_num_params']= 10*4096 ### 重要！lora_rank == 8 的情况下，lora矩阵刚好是8*4096的size。该参数指定了大于该数值的模块被wrap，10*4096的设置刚好保证了lora矩阵不会被wrap。
+    # training_args.fsdp_config['fsdp_min_num_params']= 10*4096 ### 等待调试fsdp with lora
     # print("Setup optimizer")
     # opt = torch.optim.AdamW([
     #     p
