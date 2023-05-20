@@ -65,53 +65,6 @@ DS版本支持33B（lora）llama快速进行finetune，训练时长与[LMFlow](h
 
 参数设置参考：https://github.com/mosaicml/examples/tree/release/v0.0.4/examples/llm/throughput
 
-## PMC-LLAMA-7B：
-我们在S2ORC数据集提供的4.8M PMC paper上继续训练了LLaMA-7B，得到了PMC_LLaMA_7B([Hugging Face URL](https://huggingface.co/chaoyi-wu/PMC_LLAMA_7B))
-
-整体的训练设置如下：
-* Epochs: 5
-* Batch size: 128
-* Cutoff length: 512
-* Learning rate: 2e-5
-
-每个epoch我们都从每篇paper中抽取512 tokens用来训练。
-
-## PMC-LLAMA-7B部分测试结果:
-
-#### Full Finetune:
-我们使用PubMedQA和MedMCQA数据集的训练数据做下游full-finetuning，并测试结果如下：
-| Initialize       | USMLE(OOD) | MedMCQA（ID） |
-| ---------------- | ---------- | ------------- |
-| LLaMA_7B         | 44.54      | 48.51         |
-| PMC_LLaMA_7B     | 44.70      | 50.54         |
-
-训练测试流程完全保持一致均是full finetune 3 epochs。较之于LLaMA_7B， 我们的模型取得了更好的ID（in Domain）测试效果，OOD效果不明显。
-
-#### 收敛速度-训练曲线：
-<img width="400" height="250" src=https://github.com/chaoyi-wu/Finetune_LLAMA/blob/main/figures/training_curve.png>
-
-整体上看对于医疗数据的拟合能力更强。
-
-#### Few-shot Finetune:
-
-USMLE的训练样本为10,178, 远少于MedMCQA的211,269和PubMedQA的182,822，所以我们将USMLE上的down-stream finetune和test视为Few-shot能力的对比：
-
-| Initialize       | USMLE(ID) | 
-| ---------------- | ----------| 
-| LLaMA_7B         | 35.66     | 
-| PMC_LLaMA_7B     | 40.61     | 
-
-#### LoRA Finetune:
-
-鉴于目前LLM的部署难度，LoRA Finetune是目前比较主流的框架，我们比较了在这种参数受限情况下的表现情况，实验统一使用rank-8的LoRA，训练集使用PubMedQA和MedMCQA：
-
-| Initialize       | USMLE(OOD) | MedMCQA（ID） | PubMedQA（ID） |
-| ---------------- | ---------- | ------------- | -------------|
-| LLaMA_7B         | 29.38      | 32.37         | 65.81        |
-| PMC_LLaMA_7B     | 30.64      | 34.33         | 68.23        |
-
-*注*：在Few-shot Finetune和LoRA Finetune的设置下，训练曲线均与Full Finetune时一致，相同step会有更小的loss，表现成更好的拟合医疗数据的能力。
-
 ## Acknowledge:
 参考 Minimal LLaMA https://github.com/zphang/minimal-llama 实现，主要修复了部分bug。
 
