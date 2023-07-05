@@ -10,7 +10,7 @@ pytorch包务必使用conda安装！```conda install pytorch==1.13.0 torchvision
 不要忘记安装sentencepiece！```pip install sentencepiece```\
 
 ## S2：
-进入LLAMA_Model下载模型参数 https://huggingface.co/decapoda-research/llama-7b-hf 或者官网下载llama，使用convert_to_ds_params.py进行处理。
+进入LLAMA_Model下载模型参数 https://huggingface.co/decapoda-research/llama-7b-hf 或者官网下载llama，使用convert_llama_weights_to_hf.py进行处理。
 
 ## S3：
 进入Data_sample按照示例处理数据。
